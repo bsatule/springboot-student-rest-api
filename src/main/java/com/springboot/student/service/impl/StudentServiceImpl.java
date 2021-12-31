@@ -5,6 +5,7 @@ import com.springboot.student.exception.ResourceNotFoundException;
 import com.springboot.student.payload.StudentDto;
 import com.springboot.student.repository.StudentRepository;
 import com.springboot.student.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentDto getStudentById(String id) {
-        Student student = studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
+        Student student = studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student", "id",   id));
         return mapToDto(student);
     }
 

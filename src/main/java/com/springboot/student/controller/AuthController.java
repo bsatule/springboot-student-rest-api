@@ -46,6 +46,7 @@ public class AuthController {
     public ResponseEntity<JWTAuthResponse> authenticateUser(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginDto.getUsernameOrEmail(), loginDto.getPassword()));
+        //SecurityContextHolder.getContext().setAuthentication(authentication);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // get token from tokenProvider class
         String token = tokenProvider.generateToken(authentication);
